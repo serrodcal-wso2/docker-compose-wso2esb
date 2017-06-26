@@ -1,0 +1,16 @@
+version: '2'
+services:
+  esb:
+    image: serrodcal/wso2esb-5.0.0
+    build: ./esb
+    ports:
+      - "9443:9443"
+      - "8280:8280"
+      - "8243:8243"
+      - "19444:19444"
+    command: ./test/http.sh
+  mock:
+    image: serrodcal/wiremock
+    build: ./wiremock
+    ports:
+      - "8080:8080"
